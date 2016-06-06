@@ -20,6 +20,6 @@
   "suggest": {
   },
   "autoload": {
-    "psr-4": { "Wandi\\CoreBundle\\": "" }
+    "psr-4": { "Wandi\\ToolsBundle\\": "" }
   }
 }
