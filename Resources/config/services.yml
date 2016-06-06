@@ -1,0 +1,9 @@
+services:
+    wandi_tools.string:
+        class: Wandi\ToolsBundle\Services\Str
+
+    wandi_tools.twig.vars:
+        class: Wandi\ToolsBundle\Twig\Extension\VariousExtension
+        tags:
+            - { name: twig.extension }
+        arguments: ['@service_container', '@wandi_tools.string']

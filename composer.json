@@ -1,0 +1,25 @@
+{
+  "name": "wandi/tools-bundle",
+  "type": "symfony-bundle",
+  "description": "Symfony WandiToolsBundle",
+  "keywords": ["Wandi tools"],
+  "homepage": "https://github.com/WandiParis/WandiToolsBundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jacques N. de Lamballerie",
+      "email": "jndl@wandi.fr"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "require-dev": {
+  },
+  "suggest": {
+  },
+  "autoload": {
+    "psr-4": { "Wandi\\CoreBundle\\": "" }
+  }
+}
