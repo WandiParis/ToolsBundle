@@ -2,6 +2,9 @@ services:
     wandi_tools.string:
         class: Wandi\ToolsBundle\Services\Str
 
+    wandi_tools.host_parser:
+        class: Wandi\ToolsBundle\Services\HostParser
+
     wandi_tools.twig.vars:
         class: Wandi\ToolsBundle\Twig\Extension\VariousExtension
         tags:

@@ -2,7 +2,7 @@
   "name": "wandi/tools-bundle",
   "type": "symfony-bundle",
   "description": "Symfony WandiToolsBundle",
-  "keywords": ["Wandi tools"],
+  "keywords": ["Wandi Tools"],
   "homepage": "https://github.com/WandiParis/WandiToolsBundle",
   "license": "MIT",
   "authors": [
