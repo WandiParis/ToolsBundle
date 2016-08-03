@@ -9,4 +9,4 @@ services:
         class: Wandi\ToolsBundle\Twig\Extension\VariousExtension
         tags:
             - { name: twig.extension }
-        arguments: ['@service_container', '@wandi_tools.string']
+        arguments: ['@wandi_tools.string']

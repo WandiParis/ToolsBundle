@@ -1,6 +1,6 @@
 <?php
 
-namespace Wandi\ToolsBundle\Services;
+namespace Wandi\ToolsBundle\Util;
 
 class HostParser
 {

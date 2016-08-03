@@ -2,19 +2,16 @@
 
 namespace Wandi\ToolsBundle\Twig\Extension;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use \Twig_Extension;
+use Twig_Extension;
 use Twig_SimpleFilter;
-use Wandi\ToolsBundle\Services\Str;
+use Wandi\ToolsBundle\Util\Str;
 
 class VariousExtension extends Twig_Extension
 {
-    protected $container;
     protected $str;
 
-    public function __construct(ContainerInterface $container, Str $str)
+    public function __construct(Str $str)
     {
-        $this->container = $container;
         $this->str = $str;
     }
 
@@ -39,7 +36,7 @@ class VariousExtension extends Twig_Extension
 
     public function ckeditor($str, $boPath = 'admin')
     {
-        return str_replace('"/Public/', '"/' . $boPath . '/Public/', $str);
+        return str_replace('"/Public/', '"/'.$boPath.'/Public/', $str);
     }
 
     public function getName()

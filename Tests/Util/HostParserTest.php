@@ -1,13 +1,13 @@
 <?php
 
-namespace Wandi\ToolsBundle\Tests\Services;
+namespace Wandi\ToolsBundle\Tests\Util;
 
-use Wandi\ToolsBundle\Services\HostParser;
+use Wandi\ToolsBundle\Util\HostParser;
 
 class HostParserTest extends \PHPUnit_Framework_TestCase
 {
     public function testParse(){
-        $parser = new HostParser();
+        $parser = new Wandi\ToolsBundle\Util\HostParser();
 
         $domainParsed = $parser->parse('domain.tdl');
         $this->assertEquals('domain.tdl', $domainParsed['domain']);
