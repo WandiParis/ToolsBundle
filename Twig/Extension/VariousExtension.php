@@ -2,36 +2,41 @@
 
 namespace Wandi\ToolsBundle\Twig\Extension;
 
+use Symfony\Component\Form\FormView;
 use Twig_Extension;
 use Twig_SimpleFilter;
+use Twig_SimpleFunction;
+use Wandi\ToolsBundle\Util\Form;
 use Wandi\ToolsBundle\Util\Str;
 
 class VariousExtension extends Twig_Extension
 {
     protected $str;
+    protected $form;
 
-    public function __construct(Str $str)
+    public function __construct(Str $str, Form $form)
     {
         $this->str = $str;
+        $this->form = $form;
     }
 
     public function getFilters()
     {
         return array(
-            new Twig_SimpleFilter("slugify", array($this, "slugify")),
-            new Twig_SimpleFilter("smallify", array($this, "smallify")),
+            new Twig_SimpleFilter("slug", array($this, "slug")),
+            new Twig_SimpleFilter("small", array($this, "small")),
             new Twig_SimpleFilter("ckeditor", array($this, "ckeditor")),
         );
     }
 
-    public function slugify($str)
+    public function slug($str)
     {
-        return $this->str->slugify($str);
+        return $this->str->slug($str);
     }
 
-    public function smallify($str, $length = 140)
+    public function small($str, $length = 140)
     {
-        return $this->str->trimStringToLength($str, $length);
+        return $this->str->substrToLength($str, $length);
     }
 
     public function ckeditor($str, $boPath = 'admin')
@@ -41,6 +46,6 @@ class VariousExtension extends Twig_Extension
 
     public function getName()
     {
-        return 'wandi.extension.str';
+        return 'wandi.twig.extension.various';
     }
 }

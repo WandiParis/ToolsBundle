@@ -7,7 +7,7 @@ use Wandi\ToolsBundle\Util\HostParser;
 class HostParserTest extends \PHPUnit_Framework_TestCase
 {
     public function testParse(){
-        $parser = new Wandi\ToolsBundle\Util\HostParser();
+        $parser = new HostParser();
 
         $domainParsed = $parser->parse('domain.tdl');
         $this->assertEquals('domain.tdl', $domainParsed['domain']);

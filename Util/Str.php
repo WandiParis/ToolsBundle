@@ -3,27 +3,33 @@ namespace Wandi\ToolsBundle\Util;
 
 class Str
 {
-    public static function trimStringToLength($str, $length, $more = '...')
+    public static function substrToLength($str, $length, $more = '...')
     {
-        $hasMore = false;
+        $strLength = mb_strlen($str, 'utf-8');
+        if($strLength <= $length){
+            return $str;
+        }
 
+        $hasMore = false;
         if(!empty($more)){
             $hasMore = true;
-            $length -= strlen($more);
+            $length -= mb_strlen($more, 'utf-8');
         }
 
-        $trimmed = $str;
-        if (strlen($trimmed) > $length) {
-            $trimmed = mb_substr($trimmed, 0, strrpos(substr($trimmed, 0, $length), ' '), 'UTF-8');
-            if ($hasMore === true) {
-                $trimmed .= $more;
-            }
+        $result = mb_substr($str, 0, $length, 'utf-8');
+
+        if(preg_match('/^[a-zàâçéèêëîïôûùüÿñæœ]*$/i', $str[$length])){
+            $result = mb_substr($result, 0, mb_strrpos($result, ' ', 'utf-8'), 'utf-8');
         }
 
-        return $trimmed;
+        if ($hasMore === true) {
+            $result .= $more;
+        }
+
+        return $result;
     }
 
-    public function slugify($str, $charset = 'utf-8')
+    public function slug($str, $charset = 'utf-8')
     {
         $str = htmlentities($str, ENT_NOQUOTES, $charset);
         $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
@@ -35,59 +41,29 @@ class Str
 
     public function substrBeforeFirstDelimiter($string, $delimiter)
     {
-        $stringExploded = explode($delimiter, $string);
-
-        if (count($stringExploded) > 0) {
-            return $stringExploded[0];
-        } else {
-            return $string;
+        $exploded = explode($delimiter, $string);
+        if (count($exploded) > 0) {
+            return $exploded[0];
         }
+        return $string;
     }
 
     public function substrBeforeLastDelimiter($string, $delimiter)
     {
-        $stringExploded = explode($delimiter, $string);
-        $newString = "";
-
-        if (count($stringExploded) > 0) {
-            for ($i = 0; $i < $count = (count($stringExploded) - 1); $i++) {
-                $newString .= $stringExploded[$i];
-                if ($i < $count - 1) {
-                    $newString .= $delimiter;
-                }
-            }
-            return $newString;
-        } else {
-            return $string;
-        }
+        $exploded = explode($delimiter, $string);
+        return implode($delimiter, array_slice($exploded, 0, max(1, count($exploded) -1)));
     }
 
     public function substrAfterLastDelimiter($string, $delimiter)
     {
-        $stringExploded = explode($delimiter, $string);
-
-        if (count($stringExploded) > 0) {
-            return $stringExploded[count($stringExploded) - 1];
-        } else {
-            return $string;
-        }
+        $exploded = explode($delimiter, $string);
+        return $exploded[count($exploded) - 1];
     }
 
     public function substrAfterFirstDelimiter($string, $delimiter)
     {
-        $stringExploded = explode($delimiter, $string);
-        $newString = "";
-
-        if (count($stringExploded) > 0) {
-            for ($i = 1; $i < $count = count($stringExploded); $i++) {
-                $newString .= $stringExploded[$i];
-                if ($i < $count - 1) {
-                    $newString .= $delimiter;
-                }
-            }
-            return $newString;
-        } else {
-            return $string;
-        }
+        $exploded = explode($delimiter, $string);
+        $count = count($exploded);
+        return implode($delimiter, array_slice($exploded, $count === 1 ? 0 : 1, max(1, $count -1)));
     }
 }

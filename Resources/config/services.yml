@@ -1,12 +1,15 @@
 services:
+    wandi_tools.form:
+        class: Wandi\ToolsBundle\Util\Form
+
     wandi_tools.string:
-        class: Wandi\ToolsBundle\Services\Str
+        class: Wandi\ToolsBundle\Util\Str
 
     wandi_tools.host_parser:
-        class: Wandi\ToolsBundle\Services\HostParser
+        class: Wandi\ToolsBundle\Util\HostParser
 
-    wandi_tools.twig.vars:
+    wandi_tools.twig.extension.various:
         class: Wandi\ToolsBundle\Twig\Extension\VariousExtension
         tags:
             - { name: twig.extension }
-        arguments: ['@wandi_tools.string']
+        arguments: ['@wandi_tools.string', '@wandi_tools.form']
