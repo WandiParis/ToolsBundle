@@ -20,7 +20,7 @@ class Form
         }
 
         foreach ($properties as $attribute) {
-               $attributeErrors = $form->get($attribute)->getErrors(true);
+            $attributeErrors = $form->get($attribute)->getErrors(true);
 
             foreach ($attributeErrors as $attributeError) {
                 $errors[$attribute][] = $attributeError->getMessage();
