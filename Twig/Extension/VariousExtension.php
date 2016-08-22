@@ -2,10 +2,8 @@
 
 namespace Wandi\ToolsBundle\Twig\Extension;
 
-use Symfony\Component\Form\FormView;
 use Twig_Extension;
 use Twig_SimpleFilter;
-use Twig_SimpleFunction;
 use Wandi\ToolsBundle\Util\Form;
 use Wandi\ToolsBundle\Util\Str;
 

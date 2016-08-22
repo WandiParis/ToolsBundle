@@ -2,8 +2,6 @@
 
 namespace Wandi\ToolsBundle\Util;
 
-use Symfony\Component\Form\FormFactory;
-
 class Form
 {
     public function __construct()
