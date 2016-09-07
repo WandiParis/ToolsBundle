@@ -16,3 +16,6 @@ services:
 
     wandi_tools.token_generator:
         class: Wandi\ToolsBundle\Util\TokenGenerator\TokenGenerator
+
+    wandi_tools.files_manager:
+        class: Wandi\ToolsBundle\Util\FilesManager
