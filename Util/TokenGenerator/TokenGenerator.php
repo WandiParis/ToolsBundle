@@ -1,6 +1,6 @@
 <?php
 
-namespace Wandi\ToolsBundle\Util;
+namespace Wandi\ToolsBundle\Util\TokenGenerator;
 
 class TokenGenerator implements TokenGeneratorInterface
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Wandi\ToolsBundle\Tests\Util;
+namespace Wandi\ToolsBundle\Tests\Util\TokenGenerator;
 
-use Wandi\ToolsBundle\Util\TokenGenerator;
+use Wandi\ToolsBundle\Util\TokenGenerator\TokenGenerator;
 
 class TokenGeneratorTest extends \PHPUnit_Framework_TestCase
 {
