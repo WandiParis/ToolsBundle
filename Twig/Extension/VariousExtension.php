@@ -21,9 +21,12 @@ class VariousExtension extends Twig_Extension
     public function getFilters()
     {
         return array(
-            new Twig_SimpleFilter("slug", array($this, "slug")),
-            new Twig_SimpleFilter("small", array($this, "small")),
-            new Twig_SimpleFilter("ckeditor", array($this, "ckeditor")),
+            new Twig_SimpleFilter("slug", [$this, "slug"]),
+            new Twig_SimpleFilter("small", [$this, "small"]),
+            new Twig_SimpleFilter("ckeditor", [$this, "ckeditor"]),
+            new Twig_SimpleFilter('html', [$this, 'html'], ['is_safe' => ['html']]),
+            new Twig_SimpleFilter('price_format', [$this, 'priceFormat'], ['is_safe' => ['html']]),
+            new Twig_SimpleFilter('card_number_format', [$this, 'cardNumberFormat'])
         );
     }
 
@@ -40,6 +43,30 @@ class VariousExtension extends Twig_Extension
     public function ckeditor($str, $boPath = 'admin')
     {
         return str_replace('"/Public/', '"/'.$boPath.'/Public/', $str);
+    }
+
+    public function html($html)
+    {
+        return $html;
+    }
+
+    public function priceFormat($str)
+    {
+        $exploded = explode('.', number_format($str, 2));
+        $integer = $exploded[0];
+        $decimal = $exploded[1];
+
+        $formatted = '<b>'.$integer.'</b>';
+        if($decimal != '00'){
+            $formatted .= ',' . $decimal;
+        }
+
+        return $formatted.' €';
+    }
+
+    public function cardNumberFormat($str)
+    {
+        return implode(' ', str_split($str, 4));
     }
 
     public function getName()
