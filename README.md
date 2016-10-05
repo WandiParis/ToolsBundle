@@ -1,1 +1,1 @@
-WandiToolsBundle - 1.3.2
+WandiToolsBundle - 1.4.0
