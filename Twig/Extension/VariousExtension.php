@@ -26,7 +26,8 @@ class VariousExtension extends Twig_Extension
             new Twig_SimpleFilter("ckeditor", [$this, "ckeditor"]),
             new Twig_SimpleFilter('html', [$this, 'html'], ['is_safe' => ['html']]),
             new Twig_SimpleFilter('price_format', [$this, 'priceFormat'], ['is_safe' => ['html']]),
-            new Twig_SimpleFilter('card_number_format', [$this, 'cardNumberFormat'])
+            new Twig_SimpleFilter('card_number_format', [$this, 'cardNumberFormat']),
+            new Twig_SimpleFilter('percentage_format', [$this, 'percentageFormat']),
         );
     }
 
@@ -67,6 +68,19 @@ class VariousExtension extends Twig_Extension
     public function cardNumberFormat($str)
     {
         return implode(' ', str_split($str, 4));
+    }
+
+    public function percentageFormat($str){
+        $exploded = explode('.', number_format($str, 2));
+        $integer = $exploded[0];
+        $decimal = $exploded[1];
+
+        $formatted = $integer;
+        if($decimal != '00'){
+            $formatted .= ',' . $decimal;
+        }
+
+        return $formatted.' %';
     }
 
     public function getName()
