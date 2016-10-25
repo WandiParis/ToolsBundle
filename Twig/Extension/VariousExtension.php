@@ -51,13 +51,18 @@ class VariousExtension extends Twig_Extension
         return $html;
     }
 
-    public function priceFormat($str)
+    public function priceFormat($str, $strong = false)
     {
         $exploded = explode('.', number_format($str, 2));
         $integer = $exploded[0];
         $decimal = $exploded[1];
 
-        $formatted = '<b>'.$integer.'</b>';
+        if ($strong) {
+            $formatted = '<b>'.$integer.'</b>';
+        } else {
+            $formatted = $integer;
+        }
+
         if($decimal != '00'){
             $formatted .= ',' . $decimal;
         }
