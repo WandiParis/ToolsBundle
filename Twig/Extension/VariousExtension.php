@@ -5,16 +5,19 @@ namespace Wandi\ToolsBundle\Twig\Extension;
 use Twig_Extension;
 use Twig_SimpleFilter;
 use Wandi\ToolsBundle\Util\Form;
+use Wandi\ToolsBundle\Util\Format;
 use Wandi\ToolsBundle\Util\Str;
 
 class VariousExtension extends Twig_Extension
 {
     protected $str;
+    protected $format;
     protected $form;
 
-    public function __construct(Str $str, Form $form)
+    public function __construct(Str $str, Format $format, Form $form)
     {
         $this->str = $str;
+        $this->format = $format;
         $this->form = $form;
     }
 
@@ -59,44 +62,21 @@ class VariousExtension extends Twig_Extension
 
     public function priceFormat($str, $strong = false)
     {
-        $exploded = explode('.', number_format($str, 2));
-        $integer = $exploded[0];
-        $decimal = $exploded[1];
-
-        if ($strong) {
-            $formatted = '<b>'.$integer.'</b>';
-        } else {
-            $formatted = $integer;
-        }
-
-        if ($decimal != '00') {
-            $formatted .= ','.$decimal;
-        }
-
-        return $formatted.' €';
+        return $this->format->priceFormat($str);
     }
 
     public function cardNumberFormat($str)
     {
-        return implode(' ', str_split($str, 4));
+        return $this->format->cardNumberFormat($str);
     }
 
     public function percentageFormat($str)
     {
-        $exploded = explode('.', number_format($str, 2));
-        $integer = $exploded[0];
-        $decimal = $exploded[1];
-
-        $formatted = $integer;
-        if ($decimal != '00') {
-            $formatted .= ','.$decimal;
-        }
-
-        return $formatted.' %';
+        return $this->format->percentageFormat($str);
     }
 
     public function weightFormat($str)
     {
-        return $this->str->weightFormat($str);
+        return $this->format->weightFormat($str);
     }
 }
