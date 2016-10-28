@@ -73,4 +73,15 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('1', $str->substrAfterFirstDelimiter('lorem ipsum dolor-1', '-'));
         $this->assertEquals(' 1', $str->substrAfterFirstDelimiter('lorem ipsum dolor ! - 1', '-'));
     }
+
+    public function testWeightFormat()
+    {
+        $str = new Str();
+        $this->assertEquals('1g', $str->weightFormat(1));
+        $this->assertEquals('100g', $str->weightFormat(100));
+        $this->assertEquals('1Kg', $str->weightFormat(1000));
+        $this->assertEquals('1.25Kg', $str->weightFormat(1250));
+        $this->assertEquals('1.6Kg', $str->weightFormat(1600));
+        $this->assertEquals('10.5Kg', $str->weightFormat(10500));
+    }
 }

@@ -9,9 +9,17 @@ class HostParser
         $exploded = explode('.', $host);
         $nb = count($exploded);
 
+        if($nb > 2){
+            $subdomain = array_slice($exploded, 0, 1);
+        } else{
+            $subdomain = [];
+        }
+
+        $domain = array_slice($exploded, count($subdomain), $nb);
+
         return [
-            'subdomain' => implode('.', array_slice($exploded, 0, 1)),
-            'domain' => implode('.', array_slice($exploded, 1, $nb - 1)),
+            'subdomain' => implode('.', $subdomain),
+            'domain' => implode('.', $domain),
         ];
     }
 }

@@ -28,7 +28,13 @@ class VariousExtension extends Twig_Extension
             new Twig_SimpleFilter('price_format', [$this, 'priceFormat'], ['is_safe' => ['html']]),
             new Twig_SimpleFilter('card_number_format', [$this, 'cardNumberFormat']),
             new Twig_SimpleFilter('percentage_format', [$this, 'percentageFormat']),
+            new Twig_SimpleFilter('weight_format', [$this, 'weightFormat']),
         );
+    }
+
+    public function getName()
+    {
+        return 'wandi.twig.extension.various';
     }
 
     public function slug($str)
@@ -63,8 +69,8 @@ class VariousExtension extends Twig_Extension
             $formatted = $integer;
         }
 
-        if($decimal != '00'){
-            $formatted .= ',' . $decimal;
+        if ($decimal != '00') {
+            $formatted .= ','.$decimal;
         }
 
         return $formatted.' €';
@@ -75,21 +81,22 @@ class VariousExtension extends Twig_Extension
         return implode(' ', str_split($str, 4));
     }
 
-    public function percentageFormat($str){
+    public function percentageFormat($str)
+    {
         $exploded = explode('.', number_format($str, 2));
         $integer = $exploded[0];
         $decimal = $exploded[1];
 
         $formatted = $integer;
-        if($decimal != '00'){
-            $formatted .= ',' . $decimal;
+        if ($decimal != '00') {
+            $formatted .= ','.$decimal;
         }
 
         return $formatted.' %';
     }
 
-    public function getName()
+    public function weightFormat($str)
     {
-        return 'wandi.twig.extension.various';
+        return $this->str->weightFormat($str);
     }
 }

@@ -40,6 +40,17 @@ class Str
         return trim($str, '-');
     }
 
+    public function weightFormat($value){
+        $value = intval($value);
+        $unit = 'g';
+        if($value >= 1000){
+            $unit = 'Kg';
+            $value /= 1000;
+        }
+
+        return $value.$unit;
+    }
+
     public function substrBeforeFirstDelimiter($string, $delimiter)
     {
         $exploded = explode($delimiter, $string);
