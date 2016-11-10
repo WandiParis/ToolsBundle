@@ -21,16 +21,29 @@ class FormatTest extends \PHPUnit_Framework_TestCase
     public function testPriceFormat()
     {
         $format = new Format();
-        $this->assertEquals('1 €', $format->priceFormat(1));
-        $this->assertEquals('1,50 €', $format->priceFormat(1.5));
-        $this->assertEquals('1,50 €', $format->priceFormat(1.50));
-        $this->assertEquals('1,50 €', $format->priceFormat(1.501));
-        $this->assertEquals('100 €', $format->priceFormat(100));
-        $this->assertEquals('100,50 €', $format->priceFormat(100.5));
-        $this->assertEquals('100,50 €', $format->priceFormat(100.50));
-        $this->assertEquals('100,50 €', $format->priceFormat(100.501));
-        $this->assertEquals('1000 €', $format->priceFormat(1000));
-        $this->assertEquals('1000,50 €', $format->priceFormat(1000.50));
+        $this->assertEquals('0€', $format->priceFormat(0));
+        $this->assertEquals('1€', $format->priceFormat(1));
+        $this->assertEquals('1,50€', $format->priceFormat(1.5));
+        $this->assertEquals('1,50€', $format->priceFormat(1.50));
+        $this->assertEquals('1,50€', $format->priceFormat(1.501));
+        $this->assertEquals('100€', $format->priceFormat(100));
+        $this->assertEquals('100,50€', $format->priceFormat(100.5));
+        $this->assertEquals('100,50€', $format->priceFormat(100.50));
+        $this->assertEquals('100,50€', $format->priceFormat(100.501));
+        $this->assertEquals('1000€', $format->priceFormat(1000));
+        $this->assertEquals('1000,50€', $format->priceFormat(1000.50));
+
+        $this->assertEquals('<b>0</b>€', $format->priceFormat(0, true));
+        $this->assertEquals('<b>1</b>€', $format->priceFormat(1, true));
+        $this->assertEquals('<b>1</b>,50€', $format->priceFormat(1.5, true));
+        $this->assertEquals('<b>1</b>,50€', $format->priceFormat(1.50, true));
+        $this->assertEquals('<b>1</b>,50€', $format->priceFormat(1.501, true));
+        $this->assertEquals('<b>100</b>€', $format->priceFormat(100, true));
+        $this->assertEquals('<b>100</b>,50€', $format->priceFormat(100.5, true));
+        $this->assertEquals('<b>100</b>,50€', $format->priceFormat(100.50, true));
+        $this->assertEquals('<b>100</b>,50€', $format->priceFormat(100.501, true));
+        $this->assertEquals('<b>1000</b>€', $format->priceFormat(1000, true));
+        $this->assertEquals('<b>1000</b>,50€', $format->priceFormat(1000.50, true));
     }
 
     public function testCardNumberFormat()
@@ -43,13 +56,13 @@ class FormatTest extends \PHPUnit_Framework_TestCase
     public function testPercentageFormat()
     {
         $format = new Format();
-        $this->assertEquals('1 %', $format->percentageFormat('1'));
-        $this->assertEquals('1,50 %', $format->percentageFormat('1.5'));
-        $this->assertEquals('1,50 %', $format->percentageFormat('1.50'));
-        $this->assertEquals('1,50 %', $format->percentageFormat('1.501'));
-        $this->assertEquals('10 %', $format->percentageFormat('10'));
-        $this->assertEquals('99,99 %', $format->percentageFormat('99.99'));
-        $this->assertEquals('100 %', $format->percentageFormat('100'));
+        $this->assertEquals('1%', $format->percentageFormat('1'));
+        $this->assertEquals('1,50%', $format->percentageFormat('1.5'));
+        $this->assertEquals('1,50%', $format->percentageFormat('1.50'));
+        $this->assertEquals('1,50%', $format->percentageFormat('1.501'));
+        $this->assertEquals('10%', $format->percentageFormat('10'));
+        $this->assertEquals('99,99%', $format->percentageFormat('99.99'));
+        $this->assertEquals('100%', $format->percentageFormat('100'));
     }
 
 }
