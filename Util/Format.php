@@ -31,7 +31,7 @@ class Format
             $formatted .= ','.$decimal;
         }
 
-        return $formatted.' €';
+        return $formatted.'€';
     }
 
     public function cardNumberFormat($value)
@@ -50,6 +50,6 @@ class Format
             $formatted .= ','.$decimal;
         }
 
-        return $formatted.' %';
+        return $formatted.'%';
     }
 }
