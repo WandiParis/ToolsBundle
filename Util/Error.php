@@ -10,7 +10,7 @@ class Error
     {
     }
 
-    protected function getViolationsErrors(ConstraintViolationList $violationList)
+    public function getViolationsErrors(ConstraintViolationList $violationList)
     {
         $errors = array();
 
@@ -22,7 +22,7 @@ class Error
         return $errors;
     }
 
-    private function getFormErrors(Form $form)
+    public function getFormErrors(Form $form)
     {
         $errors = array();
 
