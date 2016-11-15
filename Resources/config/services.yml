@@ -1,6 +1,6 @@
 services:
-    wandi_tools.form:
-        class: Wandi\ToolsBundle\Util\Form
+    wandi_tools.error:
+        class: Wandi\ToolsBundle\Util\Error
 
     wandi_tools.string:
         class: Wandi\ToolsBundle\Util\Str
