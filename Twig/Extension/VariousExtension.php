@@ -14,11 +14,10 @@ class VariousExtension extends Twig_Extension
     protected $format;
     protected $form;
 
-    public function __construct(Str $str, Format $format, Form $form)
+    public function __construct(Str $str, Format $format)
     {
         $this->str = $str;
         $this->format = $format;
-        $this->form = $form;
     }
 
     public function getFilters()

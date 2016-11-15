@@ -15,7 +15,7 @@ services:
         class: Wandi\ToolsBundle\Twig\Extension\VariousExtension
         tags:
             - { name: twig.extension }
-        arguments: ['@wandi_tools.string', '@wandi_tools.format', '@wandi_tools.form']
+        arguments: ['@wandi_tools.string', '@wandi_tools.format']
 
     wandi_tools.token_generator:
         class: Wandi\ToolsBundle\Util\TokenGenerator\TokenGenerator
