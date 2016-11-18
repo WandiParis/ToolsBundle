@@ -22,3 +22,7 @@ services:
 
     wandi_tools.files_manager:
         class: Wandi\ToolsBundle\Util\FilesManager
+
+    wandi_tools.referer:
+        class: Wandi\ToolsBundle\Util\Referer
+        arguments: ['@request_stack', '@router']
