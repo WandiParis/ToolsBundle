@@ -26,3 +26,7 @@ services:
     wandi_tools.referer:
         class: Wandi\ToolsBundle\Util\Referer
         arguments: ['@request_stack', '@router']
+
+    wandi_tools.sharer:
+        class: Wandi\ToolsBundle\Util\Sharer
+        arguments: ['@request_stack']

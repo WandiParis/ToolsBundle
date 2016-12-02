@@ -1,6 +1,7 @@
 <?php
 
 namespace Wandi\ToolsBundle\Util;
+
 use Symfony\Component\Form\Form;
 use Symfony\Component\Validator\ConstraintViolationList;
 
@@ -25,7 +26,6 @@ class Error
     public function getFormErrors(Form $form)
     {
         $errors = array();
-
         foreach ($form->getErrors() as $key => $error) {
             if ($form->isRoot()) {
                 $errors['#'][] = $error->getMessage();
@@ -36,7 +36,11 @@ class Error
 
         foreach ($form->all() as $child) {
             if (!$child->isValid()) {
-                $errors[$child->getName()] = $this->getFormErrors($child);
+                $childErrors = $this->getFormErrors($child);
+                if (!empty($childErrors)) {
+                    $errors[$child->getName()] = $childErrors;
+                }
+
             }
         }
 
