@@ -31,6 +31,7 @@ class VariousExtension extends Twig_Extension
             new Twig_SimpleFilter('card_number_format', [$this, 'cardNumberFormat']),
             new Twig_SimpleFilter('percentage_format', [$this, 'percentageFormat']),
             new Twig_SimpleFilter('weight_format', [$this, 'weightFormat']),
+            new Twig_SimpleFilter('start_replace', [$this, 'startReplace']),
         );
     }
 
@@ -77,5 +78,10 @@ class VariousExtension extends Twig_Extension
     public function weightFormat($str)
     {
         return $this->format->weightFormat($str);
+    }
+
+    public function startReplace($str, $needle)
+    {
+        return $this->str->startReplace($str, $needle);
     }
 }

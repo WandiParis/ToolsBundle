@@ -71,4 +71,11 @@ class Str
 
         return implode($delimiter, array_slice($exploded, $count === 1 ? 0 : 1, max(1, $count - 1)));
     }
+
+    public static function startReplace($string, $needle){
+        if(strpos(strtolower($string), strtolower($needle)) === 0){
+            return trim(substr($string, strlen($needle), strlen($string) - 1));
+        }
+        return $string;
+    }
 }
