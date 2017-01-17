@@ -6,9 +6,18 @@ class Format
     public function weightFormat($value){
         $value = intval($value);
         $unit = 'g';
+
         if($value >= 1000){
             $unit = 'Kg';
             $value /= 1000;
+            $exploded = explode('.', number_format($value, 3, '.', ''));
+            $integer = $exploded[0];
+            $decimal = $exploded[1];
+
+            $value = $integer;
+            if ($decimal != '000') {
+                $value .= ','.$decimal;
+            }
         }
 
         return $value.$unit;
