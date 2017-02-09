@@ -23,7 +23,7 @@ class Format
         return $value.$unit;
     }
 
-    public function priceFormat($value, $strong = false)
+    public function priceFormat($value, $strong = false, $currency = true)
     {
         $exploded = explode('.', number_format($value, 2, '.', ''));
 
@@ -40,7 +40,11 @@ class Format
             $formatted .= ','.$decimal;
         }
 
-        return $formatted.'€';
+        if($currency){
+            $formatted .= '€';
+        }
+
+        return $formatted;
     }
 
     public function cardNumberFormat($value)

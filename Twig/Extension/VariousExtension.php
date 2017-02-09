@@ -60,9 +60,9 @@ class VariousExtension extends Twig_Extension
         return $html;
     }
 
-    public function priceFormat($str, $strong = false)
+    public function priceFormat($str, $strong = false, $currency = true)
     {
-        return $this->format->priceFormat($str, $strong);
+        return $this->format->priceFormat($str, $strong, $currency);
     }
 
     public function cardNumberFormat($str)
