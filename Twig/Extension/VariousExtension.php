@@ -32,12 +32,17 @@ class VariousExtension extends Twig_Extension
             new Twig_SimpleFilter('percentage_format', [$this, 'percentageFormat']),
             new Twig_SimpleFilter('weight_format', [$this, 'weightFormat']),
             new Twig_SimpleFilter('start_replace', [$this, 'startReplace']),
+            new Twig_SimpleFilter('json_decode', [$this, 'jsonDecode']),
         );
     }
 
     public function getName()
     {
         return 'wandi.twig.extension.various';
+    }
+
+    public function jsonDecode($str){
+        return \json_decode($str);
     }
 
     public function slug($str)
