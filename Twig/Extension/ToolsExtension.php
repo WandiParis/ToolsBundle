@@ -4,11 +4,10 @@ namespace Wandi\ToolsBundle\Twig\Extension;
 
 use Twig_Extension;
 use Twig_SimpleFilter;
-use Wandi\ToolsBundle\Util\Form;
-use Wandi\ToolsBundle\Util\Format;
-use Wandi\ToolsBundle\Util\Str;
+use Wandi\ToolsBundle\Tools\Format;
+use Wandi\ToolsBundle\Tools\Str;
 
-class VariousExtension extends Twig_Extension
+class ToolsExtension extends \Twig_Extension
 {
     protected $str;
     protected $format;
@@ -23,9 +22,9 @@ class VariousExtension extends Twig_Extension
     public function getFilters()
     {
         return array(
-            new Twig_SimpleFilter("slug", [$this, "slug"]),
-            new Twig_SimpleFilter("small", [$this, "small"]),
-            new Twig_SimpleFilter("ckeditor", [$this, "ckeditor"]),
+            new Twig_SimpleFilter('slug', [$this, 'slug']),
+            new Twig_SimpleFilter('small', [$this, 'small']),
+            new Twig_SimpleFilter('ckeditor', [$this, 'ckeditor']),
             new Twig_SimpleFilter('html', [$this, 'html'], ['is_safe' => ['html']]),
             new Twig_SimpleFilter('price_format', [$this, 'priceFormat'], ['is_safe' => ['html']]),
             new Twig_SimpleFilter('card_number_format', [$this, 'cardNumberFormat']),
@@ -41,7 +40,8 @@ class VariousExtension extends Twig_Extension
         return 'wandi.twig.extension.various';
     }
 
-    public function jsonDecode($str){
+    public function jsonDecode($str)
+    {
         return \json_decode($str);
     }
 

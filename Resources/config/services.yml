@@ -1,24 +1,22 @@
 services:
-    wandi_tools.error:
-        class: Wandi\ToolsBundle\Util\Error
-
     wandi_tools.string:
         class: Wandi\ToolsBundle\Util\Str
 
     wandi_tools.format:
         class: Wandi\ToolsBundle\Util\Format
+        arguments: ['@wandi_tools.string']
 
     wandi_tools.host_parser:
         class: Wandi\ToolsBundle\Util\HostParser
 
     wandi_tools.twig.extension.various:
-        class: Wandi\ToolsBundle\Twig\Extension\VariousExtension
+        class: Wandi\ToolsBundle\Twig\Extension\Tools
         tags:
             - { name: twig.extension }
         arguments: ['@wandi_tools.string', '@wandi_tools.format']
 
     wandi_tools.token_generator:
-        class: Wandi\ToolsBundle\Util\TokenGenerator\TokenGenerator
+        class: Wandi\ToolsBundle\Util\TokenGenerator
 
     wandi_tools.files_manager:
         class: Wandi\ToolsBundle\Util\FilesManager
