@@ -1,30 +1,30 @@
 services:
     wandi_tools.string:
-        class: Wandi\ToolsBundle\Util\Str
+        class: Wandi\ToolsBundle\Tools\Str
 
     wandi_tools.format:
-        class: Wandi\ToolsBundle\Util\Format
+        class: Wandi\ToolsBundle\Tools\Format
         arguments: ['@wandi_tools.string']
 
     wandi_tools.host_parser:
-        class: Wandi\ToolsBundle\Util\HostParser
+        class: Wandi\ToolsBundle\Tools\HostParser
 
-    wandi_tools.twig.extension.various:
-        class: Wandi\ToolsBundle\Twig\Extension\Tools
+    wandi_tools.twig.extension.tools:
+        class: Wandi\ToolsBundle\Twig\Extension\ToolsExtension
         tags:
             - { name: twig.extension }
         arguments: ['@wandi_tools.string', '@wandi_tools.format']
 
     wandi_tools.token_generator:
-        class: Wandi\ToolsBundle\Util\TokenGenerator
+        class: Wandi\ToolsBundle\Tools\TokenGenerator
 
     wandi_tools.files_manager:
-        class: Wandi\ToolsBundle\Util\FilesManager
+        class: Wandi\ToolsBundle\Tools\FilesManager
 
     wandi_tools.referer:
-        class: Wandi\ToolsBundle\Util\Referer
+        class: Wandi\ToolsBundle\Tools\Referer
         arguments: ['@request_stack', '@router']
 
     wandi_tools.sharer:
-        class: Wandi\ToolsBundle\Util\Sharer
+        class: Wandi\ToolsBundle\Tools\Sharer
         arguments: ['@request_stack']
