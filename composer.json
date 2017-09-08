@@ -16,8 +16,7 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=7.1.0",
-        "symfony/framework-bundle": "~3.3",
-        "phpunit/phpunit": "^6.3"
+        "symfony/framework-bundle": "~3.3"
     },
     "require-dev": {
     },
