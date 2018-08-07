@@ -1,30 +1,60 @@
 services:
+    Wandi\ToolsBundle\Tools\Str:
+
     wandi_tools.string:
-        class: Wandi\ToolsBundle\Tools\Str
+        alias: Wandi\ToolsBundle\Tools\Str
+        public: true
+
+    Wandi\ToolsBundle\Tools\Format:
+        arguments:
+        - '@Wandi\ToolsBundle\Tools\Str'
 
     wandi_tools.format:
-        class: Wandi\ToolsBundle\Tools\Format
-        arguments: ['@wandi_tools.string']
+        alias: Wandi\ToolsBundle\Tools\Format
+        public: true
+
+    Wandi\ToolsBundle\Tools\HostParser:
 
     wandi_tools.host_parser:
-        class: Wandi\ToolsBundle\Tools\HostParser
+        alias: Wandi\ToolsBundle\Tools\HostParser
+        public: true
+
+    Wandi\ToolsBundle\Twig\Extension\ToolsExtension:
+        tags:
+        - { name: twig.extension }
+        arguments:
+        - '@Wandi\ToolsBundle\Tools\Str'
+        - '@Wandi\ToolsBundle\Tools\Format'
 
     wandi_tools.twig.extension.tools:
-        class: Wandi\ToolsBundle\Twig\Extension\ToolsExtension
-        tags:
-            - { name: twig.extension }
-        arguments: ['@wandi_tools.string', '@wandi_tools.format']
+        alias: Wandi\ToolsBundle\Twig\Extension\ToolsExtension
+        public: true
+
+    Wandi\ToolsBundle\Tools\TokenGenerator:
 
     wandi_tools.token_generator:
-        class: Wandi\ToolsBundle\Tools\TokenGenerator
+        alias: Wandi\ToolsBundle\Tools\TokenGenerator
+        public: true
+
+    Wandi\ToolsBundle\Tools\FilesManager:
 
     wandi_tools.files_manager:
-        class: Wandi\ToolsBundle\Tools\FilesManager
+        alias: Wandi\ToolsBundle\Tools\FilesManager
+        public: true
+
+    Wandi\ToolsBundle\Tools\Referer:
+        arguments:
+        - '@request_stack'
+        - '@router'
 
     wandi_tools.referer:
-        class: Wandi\ToolsBundle\Tools\Referer
-        arguments: ['@request_stack', '@router']
+        alias: Wandi\ToolsBundle\Tools\Referer
+        public: true
+
+    Wandi\ToolsBundle\Tools\Sharer:
+        arguments:
+        - '@request_stack'
 
     wandi_tools.sharer:
-        class: Wandi\ToolsBundle\Tools\Sharer
-        arguments: ['@request_stack']
+        alias: Wandi\ToolsBundle\Tools\Sharer
+        public: true
