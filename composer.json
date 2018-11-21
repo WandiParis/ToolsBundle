@@ -1,11 +1,14 @@
 {
     "name": "wandi/tools-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony WandiToolsBundle",
+    "description": "Wandi/ToolsBundle",
     "keywords": [
-        "Wandi Tools"
+        "Symfony",
+        "Bundle",
+        "Wandi",
+        "ToolsBundle"
     ],
-    "homepage": "https://github.com/WandiParis/WandiToolsBundle",
+    "homepage": "https://github.com/WandiParis/ToolsBundle",
     "license": "MIT",
     "authors": [
         {
