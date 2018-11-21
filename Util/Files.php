@@ -40,7 +40,7 @@ class Files
     public static function deleteDirectory(string $target): bool
     {
         if (self::isDirectory($target)) {
-            $files = glob($target . '*', GLOB_MARK);
+            $files = glob($target.'*', GLOB_MARK);
             foreach ($files as $file) {
                 self::deleteDirectory($file);
             }
@@ -54,6 +54,7 @@ class Files
 
     /**
      * @param string $path
+     *
      * @return UploadedFile
      */
     public static function getUploadedFile(string $path): ?UploadedFile
@@ -64,28 +65,27 @@ class Files
         $basename = Strings::substrBeforeLastDelimiter($pathinfo['basename'], '.');
         $extension = $pathinfo['extension'] ?? null;
 
-
-        if ($extension === null && ((false === copy($path, $tmpPath = sys_get_temp_dir() . '/' . uniqid())) || (false === $extension = $mimes->getExtension(mime_content_type($tmpPath))))) {
+        if (null === $extension && ((false === copy($path, $tmpPath = sys_get_temp_dir().'/'.uniqid())) || (false === $extension = $mimes->getExtension(mime_content_type($tmpPath))))) {
             return null;
         }
 
-        if($extension !== null){
+        if (null !== $extension) {
             // path width extension
-            $tmpPath = $tmpPath = sys_get_temp_dir() . '/' . uniqid() . '.' . $extension;
-            if(false === copy($path, $tmpPath)){
+            $tmpPath = $tmpPath = sys_get_temp_dir().'/'.uniqid().'.'.$extension;
+            if (false === copy($path, $tmpPath)) {
                 return null;
             }
         } else {
             // path without extension
-            $tmpPath = $tmpPath = sys_get_temp_dir() . '/' . uniqid() ;
-            if(false === copy($path, $tmpPath) || false === $extension = $mimes->getExtension(mime_content_type($tmpPath))){
+            $tmpPath = $tmpPath = sys_get_temp_dir().'/'.uniqid();
+            if (false === copy($path, $tmpPath) || false === $extension = $mimes->getExtension(mime_content_type($tmpPath))) {
                 return null;
             }
 
             $oldTmpPath = $tmpPath;
-            $tmpPath .= '.' . $extension;
+            $tmpPath .= '.'.$extension;
 
-            if(false === rename($oldTmpPath, $tmpPath)){
+            if (false === rename($oldTmpPath, $tmpPath)) {
                 return null;
             }
         }
@@ -94,8 +94,9 @@ class Files
     }
 
     /**
-     * @param array $paths
+     * @param array      $paths
      * @param array|null $extensions
+     *
      * @return null|UploadedFile
      */
     public static function getRandomUploadedFile(array $paths, array $extensions = null): ?UploadedFile
@@ -103,14 +104,14 @@ class Files
         $finder = new Finder();
         $finder->in($paths);
 
-        if ($extensions !== null) {
-            $regex = '/(' . implode('|', $extensions) . ')/i';
+        if (null !== $extensions) {
+            $regex = '/('.implode('|', $extensions).')/i';
             $finder->name($regex);
         }
 
         $files = [];
         foreach ($finder->files() as $file) {
-            /** @var SplFileInfo $file */
+            /* @var SplFileInfo $file */
             $files[] = $file->getPathname();
         }
 
