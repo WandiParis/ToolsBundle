@@ -1,4 +1,4 @@
-WandiToolsBundle - 3.0.0
+WandiToolsBundle
 
 ```
 cp phpunit.xml.dist phpunit.xml
