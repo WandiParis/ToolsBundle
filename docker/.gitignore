@@ -1,0 +1,4 @@
+/php/.env
+/db/.env
+/db/data
+/logs

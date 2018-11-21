@@ -2,23 +2,10 @@
 
 namespace Wandi\ToolsBundle\Twig\Extension;
 
-use Twig_Extension;
 use Twig_SimpleFilter;
-use Wandi\ToolsBundle\Tools\Format;
-use Wandi\ToolsBundle\Tools\Str;
 
 class ToolsExtension extends \Twig_Extension
 {
-    protected $str;
-    protected $format;
-    protected $form;
-
-    public function __construct(Str $str, Format $format)
-    {
-        $this->str = $str;
-        $this->format = $format;
-    }
-
     public function getFilters()
     {
         return array(
@@ -37,26 +24,26 @@ class ToolsExtension extends \Twig_Extension
 
     public function slug($str)
     {
-        return $this->str->slug($str);
+        return Strings::slug($str);
     }
 
     public function priceFormat($str, $strong = false, $currency = true)
     {
-        return $this->format->priceFormat($str, $strong, $currency);
+        return Formatter::priceFormat($str, $strong, $currency);
     }
 
     public function cardNumberFormat($str)
     {
-        return $this->format->cardNumberFormat($str);
+        return Formatter::cardNumberFormat($str);
     }
 
     public function percentageFormat($str)
     {
-        return $this->format->percentageFormat($str);
+        return Formatter::percentageFormat($str);
     }
 
     public function weightFormat($str)
     {
-        return $this->format->weightFormat($str);
+        return Formatter::weightFormat($str);
     }
 }

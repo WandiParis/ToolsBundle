@@ -1,8 +1,8 @@
 <?php
 
-namespace Wandi\ToolsBundle\Tools;
+namespace Wandi\ToolsBundle\Util;
 
-class Str
+class Strings
 {
     /**
      * @param string $haystack
@@ -30,7 +30,7 @@ class Str
             $result = mb_substr($result, 0, mb_strrpos($result, ' ', 'utf-8'), 'utf-8');
         }
 
-        if ($hasMore === true) {
+        if (true === $hasMore) {
             $result .= $more;
         }
 
@@ -110,7 +110,7 @@ class Str
         $exploded = explode($delimiter, $haystack);
         $count = count($exploded);
 
-        return implode($delimiter, array_slice($exploded, $count === 1 ? 0 : 1, max(1, $count - 1)));
+        return implode($delimiter, array_slice($exploded, 1 === $count ? 0 : 1, max(1, $count - 1)));
     }
 
     /**
@@ -135,7 +135,7 @@ class Str
     public static function endsWith(string $haystack, string $needle): string
     {
         $length = mb_strlen($needle, 'utf-8');
-        if ($length == 0) {
+        if (0 == $length) {
             return true;
         }
 

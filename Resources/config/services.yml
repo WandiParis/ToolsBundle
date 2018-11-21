@@ -1,60 +1,43 @@
 services:
-    Wandi\ToolsBundle\Tools\Str:
-
-    wandi_tools.string:
-        alias: Wandi\ToolsBundle\Tools\Str
+    Wandi\ToolsBundle\Util\Strings:
+    wandi_tools.strings:
+        alias: Wandi\ToolsBundle\Util\Strings
         public: true
 
-    Wandi\ToolsBundle\Tools\Format:
-        arguments:
-        - '@Wandi\ToolsBundle\Tools\Str'
-
-    wandi_tools.format:
-        alias: Wandi\ToolsBundle\Tools\Format
+    Wandi\ToolsBundle\Util\Formatter:
+    wandi_tools.formatter:
+        alias: Wandi\ToolsBundle\Util\Formatter
         public: true
 
-    Wandi\ToolsBundle\Tools\HostParser:
-
+    Wandi\ToolsBundle\Util\HostParser:
     wandi_tools.host_parser:
-        alias: Wandi\ToolsBundle\Tools\HostParser
+        alias: Wandi\ToolsBundle\Util\HostParser
         public: true
 
     Wandi\ToolsBundle\Twig\Extension\ToolsExtension:
         tags:
-        - { name: twig.extension }
-        arguments:
-        - '@Wandi\ToolsBundle\Tools\Str'
-        - '@Wandi\ToolsBundle\Tools\Format'
+            - { name: twig.extension }
 
     wandi_tools.twig.extension.tools:
         alias: Wandi\ToolsBundle\Twig\Extension\ToolsExtension
         public: true
 
-    Wandi\ToolsBundle\Tools\TokenGenerator:
-
+    Wandi\ToolsBundle\Util\TokenGenerator:
     wandi_tools.token_generator:
-        alias: Wandi\ToolsBundle\Tools\TokenGenerator
+        alias: Wandi\ToolsBundle\Util\TokenGenerator
         public: true
 
-    Wandi\ToolsBundle\Tools\FilesManager:
-
-    wandi_tools.files_manager:
-        alias: Wandi\ToolsBundle\Tools\FilesManager
+    Wandi\ToolsBundle\Util\Files:
+    wandi_tools.files:
+        alias: Wandi\ToolsBundle\Util\Files
         public: true
 
-    Wandi\ToolsBundle\Tools\Referer:
-        arguments:
-        - '@request_stack'
-        - '@router'
-
-    wandi_tools.referer:
-        alias: Wandi\ToolsBundle\Tools\Referer
-        public: true
-
-    Wandi\ToolsBundle\Tools\Sharer:
-        arguments:
-        - '@request_stack'
-
+    Wandi\ToolsBundle\Util\Sharer:
     wandi_tools.sharer:
-        alias: Wandi\ToolsBundle\Tools\Sharer
+        alias: Wandi\ToolsBundle\Util\Sharer
+        public: true
+
+    Wandi\ToolsBundle\Util\Arrays:
+    wandi_tools.arrays:
+        alias: Wandi\ToolsBundle\Util\Arrays
         public: true

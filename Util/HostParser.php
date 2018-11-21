@@ -1,17 +1,17 @@
 <?php
 
-namespace Wandi\ToolsBundle\Tools;
+namespace Wandi\ToolsBundle\Util;
 
 class HostParser
 {
     /**
-     * Parse a.
+     * Parse a host.
      *
      * @param string $host
      *
      * @return array
      */
-    public function parse(string $host = ''): array
+    public static function parse(string $host = ''): array
     {
         $exploded = explode('.', $host);
         $nb = count($exploded);

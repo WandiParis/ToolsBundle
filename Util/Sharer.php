@@ -1,6 +1,6 @@
 <?php
 
-namespace Wandi\ToolsBundle\Tools;
+namespace Wandi\ToolsBundle\Util;
 
 class Sharer
 {
@@ -13,7 +13,7 @@ class Sharer
      *
      * @return string
      */
-    public function getMail(string $url, string $subject, string $email): string
+    public static function getMail(string $url, string $subject, string $email): string
     {
         $subjectEncoded = urlencode($subject);
         $urlEncoded = urlencode($url);
@@ -28,7 +28,7 @@ class Sharer
      *
      * @return string
      */
-    public function getFacebook(string $url): string
+    public static function getFacebook(string $url): string
     {
         $urlEncoded = urlencode($url);
 
@@ -42,7 +42,7 @@ class Sharer
      *
      * @return string
      */
-    public function getTwitter(string $url): string
+    public static function getTwitter(string $url): string
     {
         $urlEncoded = urlencode($url);
 
@@ -56,7 +56,7 @@ class Sharer
      *
      * @return string
      */
-    public function getGooglePlus(string $url): string
+    public static function getGooglePlus(string $url): string
     {
         $urlEncoded = urlencode($url);
 
@@ -71,7 +71,7 @@ class Sharer
      *
      * @return string
      */
-    public function getLinkedIn(string $url, string $title): string
+    public static function getLinkedIn(string $url, string $title): string
     {
         $titleEncoded = urlencode($title);
         $urlEncoded = urlencode($url);
@@ -87,7 +87,7 @@ class Sharer
      *
      * @return string
      */
-    public function getPinterest(string $url, string $title): string
+    public static function getPinterest(string $url, string $title): string
     {
         $titleEncoded = urlencode($title);
         $urlEncoded = urlencode($url);

@@ -1,15 +1,15 @@
 <?php
 
-namespace Wandi\ToolsBundle\Tools;
+namespace Wandi\ToolsBundle\Util;
 
-class FilesManager
+class Files
 {
     /** Is file
      * @param string $path
      *
      * @return bool
      */
-    public function isFile(string $path): bool
+    public static function isFile(string $path): bool
     {
         return is_file($path);
     }
@@ -21,7 +21,7 @@ class FilesManager
      *
      * @return bool
      */
-    public function isDirectory(string $path): bool
+    public static function isDirectory(string $path): bool
     {
         return is_dir($path);
     }
@@ -33,15 +33,15 @@ class FilesManager
      *
      * @return bool
      */
-    public function removeDirectory(string $target): bool
+    public static function deleteDirectory(string $target): bool
     {
-        if ($this->isDirectory($target)) {
+        if (self::isDirectory($target)) {
             $files = glob($target.'*', GLOB_MARK);
             foreach ($files as $file) {
-                $this->removeDirectory($file);
+                self::deleteDirectory($file);
             }
             @rmdir($target);
-        } elseif ($this->isFile($target)) {
+        } elseif (self::isFile($target)) {
             @unlink($target);
         }
 

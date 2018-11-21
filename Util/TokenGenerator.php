@@ -1,6 +1,6 @@
 <?php
 
-namespace Wandi\ToolsBundle\Tools;
+namespace Wandi\ToolsBundle\Util;
 
 class TokenGenerator
 {
@@ -11,7 +11,7 @@ class TokenGenerator
      *
      * @return string
      */
-    public function generate(int $length = 16): string
+    public static function generate(int $length = 16): string
     {
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $count = mb_strlen($chars, 'utf-8');

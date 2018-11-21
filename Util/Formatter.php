@@ -1,21 +1,9 @@
 <?php
 
-namespace Wandi\ToolsBundle\Tools;
+namespace Wandi\ToolsBundle\Util;
 
-class Format
+class Formatter
 {
-    private $str;
-
-    /**
-     * Format constructor.
-     *
-     * @param Str $str
-     */
-    public function __construct(Str $str)
-    {
-        $this->str = $str;
-    }
-
     /**
      * Format a weight.
      *
@@ -29,7 +17,7 @@ class Format
      *
      * @return string
      */
-    public function weightFormat(
+    public static function weightFormat(
         int $value,
         int $nbDecimals = 3,
         string $decSep = '.',
@@ -45,8 +33,8 @@ class Format
 
         $formatted = number_format($value, $nbDecimals, $decSep, $thousandsSep);
 
-        $integerPart = $this->str->substrBeforeLastDelimiter($formatted, $decSep);
-        $decimalsPart = $this->str->substrAfterLastDelimiter($formatted, $decSep);
+        $integerPart = Strings::substrBeforeLastDelimiter($formatted, $decSep);
+        $decimalsPart = Strings::substrAfterLastDelimiter($formatted, $decSep);
 
         $formatted = $integerPart;
         if (intval($decimalsPart)) {
@@ -68,7 +56,7 @@ class Format
      *
      * @return string
      */
-    public function priceFormat(
+    public static function priceFormat(
         float $value,
         int $nbDecimals = 2,
         string $decSep = '.',
@@ -78,8 +66,8 @@ class Format
     ): string {
         $formatted = number_format($value, $nbDecimals, $decSep, $thousandsSep);
 
-        $integerPart = $this->str->substrBeforeLastDelimiter($formatted, $decSep);
-        $decimalsPart = $this->str->substrAfterLastDelimiter($formatted, $decSep);
+        $integerPart = Strings::substrBeforeLastDelimiter($formatted, $decSep);
+        $decimalsPart = Strings::substrAfterLastDelimiter($formatted, $decSep);
 
         $formatted = $integerPart;
         if (intval($decimalsPart)) {
@@ -101,7 +89,7 @@ class Format
      *
      * @return string
      */
-    public function cardNumberFormat(int $value, string $separator = ' ')
+    public static function cardNumberFormat(int $value, string $separator = ' ')
     {
         return implode($separator, str_split($value, 4));
     }
@@ -118,7 +106,7 @@ class Format
      *
      * @return string
      */
-    public function percentageFormat(
+    public static function percentageFormat(
         float $value,
         int $nbDecimals = 2,
         string $decSep = '.',
@@ -128,8 +116,8 @@ class Format
     ): string {
         $formatted = number_format($value * 100, $nbDecimals, $decSep, $thousandsSep);
 
-        $integerPart = $this->str->substrBeforeLastDelimiter($formatted, $decSep);
-        $decimalsPart = $this->str->substrAfterLastDelimiter($formatted, $decSep);
+        $integerPart = Strings::substrBeforeLastDelimiter($formatted, $decSep);
+        $decimalsPart = Strings::substrAfterLastDelimiter($formatted, $decSep);
 
         $formatted = $integerPart;
         if (intval($decimalsPart)) {
