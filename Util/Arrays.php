@@ -5,13 +5,13 @@ namespace Wandi\ToolsBundle\Util;
 class Arrays
 {
     /**
-     * @param array    $elements
+     * @param array    $array
      * @param int|null $min
      * @param int|null $max
      *
-     * @return array
+     * @return array|null+
      */
-    public static function getRandSubArray(array $array, int $min = null, int $max = null): ?array
+    public static function getRandomSubArray(array $array, int $min = null, int $max = null): ?array
     {
         $count = \count($array);
 
