@@ -44,9 +44,9 @@ class Files
             foreach ($files as $file) {
                 self::deleteDirectory($file);
             }
-            rmdir($target);
+            @rmdir($target);
         } elseif (self::isFile($target)) {
-            unlink($target);
+            @unlink($target);
         }
 
         return true;
