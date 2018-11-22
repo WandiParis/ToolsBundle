@@ -11,19 +11,20 @@ class Arrays
      *
      * @return array|null+
      */
-    public static function getRandomSubArray(array $array, int $min = null, int $max = null): ?array
+    public static function getRandomSubArray(array $array, int $min = 0, int $max = null): ?array
     {
         $count = \count($array);
+        $max = $max ?? $count;
 
-        if (null === $min) {
-            $min = 0;
+        if ($min < 0 || $max > $count) {
+            throw new \InvalidArgumentException();
         }
 
-        if (null === $max || $max > $count) {
-            $max = $count;
+        if (0 === $rand = rand($min, $max)) {
+            return [];
         }
 
-        $randomIndexes = array_rand($array, rand($min, $max));
+        $randomIndexes = array_rand($array, $rand);
         $randomIndexes = is_array($randomIndexes) ? $randomIndexes : [$randomIndexes];
 
         return array_intersect_key($array, array_flip($randomIndexes));
