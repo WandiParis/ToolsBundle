@@ -1,5 +1,7 @@
 WandiToolsBundle
 
+[![Build Status](https://travis-ci.org/WandiParis/ToolsBundle.svg?branch=master)](https://travis-ci.org/WandiParis/ToolsBundle)
+
 ```
 cp phpunit.xml.dist phpunit.xml
 docker-compose build
