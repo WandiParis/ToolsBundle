@@ -1,5 +1,11 @@
+branches:
+  only:
+    - legacy-stable
+    - master
+    - unstable
+
 language: php
-sudo: false
+
 cache:
   directories:
     - $HOME/.composer/cache/files
@@ -11,8 +17,7 @@ matrix:
     - php: 7.2
 
 install:
-  - composer install
-  - composer require phpunit/phpunit
+  - composer update --prefer-dist
 
 script:
   - ./vendor/bin/phpunit -v --stop-on-failure

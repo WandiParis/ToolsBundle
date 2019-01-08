@@ -2,7 +2,7 @@
 
 namespace Wandi\ToolsBundle\Tests\Util;
 
-use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 use Wandi\ToolsBundle\Util\Files;
 
 class FilesTest extends TestCase

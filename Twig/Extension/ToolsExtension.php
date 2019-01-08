@@ -3,18 +3,20 @@
 namespace Wandi\ToolsBundle\Twig\Extension;
 
 use Twig_SimpleFilter;
+use Wandi\ToolsBundle\Util\Formatter;
+use Wandi\ToolsBundle\Util\Strings;
 
 class ToolsExtension extends \Twig_Extension
 {
     public function getFilters()
     {
-        return array(
+        return [
             new Twig_SimpleFilter('slug', [$this, 'slug']),
             new Twig_SimpleFilter('price_format', [$this, 'priceFormat'], ['is_safe' => ['html']]),
             new Twig_SimpleFilter('card_number_format', [$this, 'cardNumberFormat']),
             new Twig_SimpleFilter('percentage_format', [$this, 'percentageFormat']),
             new Twig_SimpleFilter('weight_format', [$this, 'weightFormat']),
-        );
+        ];
     }
 
     public function getName()

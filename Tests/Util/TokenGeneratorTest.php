@@ -2,7 +2,7 @@
 
 namespace Wandi\ToolsBundle\Tests\Util\TokenGenerator;
 
-use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 use Wandi\ToolsBundle\Util\TokenGenerator;
 
 class TokenGeneratorTest extends TestCase
