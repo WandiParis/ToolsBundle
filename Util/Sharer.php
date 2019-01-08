@@ -46,7 +46,7 @@ class Sharer
     {
         $urlEncoded = urlencode($url);
 
-        return "https://twitter.com/share?url=$urlEncoded";
+        return "https://twitter.com/home?status=$urlEncoded";
     }
 
     /**
@@ -71,12 +71,14 @@ class Sharer
      *
      * @return string
      */
-    public static function getLinkedIn(string $url, string $title): string
+    public static function getLinkedIn(string $url, string $title, string $summary = "", string $source = ""): string
     {
         $titleEncoded = urlencode($title);
         $urlEncoded = urlencode($url);
+        $summaryEncoded = urlencode($summary);
+        $sourceEncoded = urlencode($source);
 
-        return "https://www.linkedin.com/shareArticle?mini=true&url=$urlEncoded&title=$titleEncoded";
+        return "https://www.linkedin.com/shareArticle?mini=true&url=$urlEncoded&title=$titleEncoded&summary=$summaryEncoded&source=$sourceEncoded";
     }
 
     /**
@@ -87,11 +89,12 @@ class Sharer
      *
      * @return string
      */
-    public static function getPinterest(string $url, string $title): string
+    public static function getPinterest(string $url, string $source, string $description = ""): string
     {
-        $titleEncoded = urlencode($title);
+        $sourceEncoded = urlencode($source);
         $urlEncoded = urlencode($url);
+        $descriptionEncoded = urlencode($description);
 
-        return "https://pinterest.com/pin/create/button/?url=$urlEncoded&description=$titleEncoded";
+        return "https://pinterest.com/pin/create/button/?url=$urlEncoded&media=$sourceEncoded&description=$descriptionEncoded";
     }
 }
