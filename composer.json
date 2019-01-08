@@ -20,7 +20,8 @@
     "require": {
         "php": ">=7.1.0",
         "symfony/framework-bundle": ">=3.3",
-        "ralouphie/mimey": "^2.0"
+        "ralouphie/mimey": "^2.0",
+        "ext-fileinfo": "*"
     },
     "require-dev": {
     },

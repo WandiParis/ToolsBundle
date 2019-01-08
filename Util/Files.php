@@ -4,6 +4,7 @@ namespace Wandi\ToolsBundle\Util;
 
 use Mimey\MimeTypes;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Files
@@ -62,7 +63,6 @@ class Files
         $mimes = new MimeTypes();
         $pathinfo = pathinfo($path);
 
-        $basename = Strings::substrBeforeLastDelimiter($pathinfo['basename'], '.');
         $extension = $pathinfo['extension'] ?? null;
 
         if (null === $extension && ((false === copy($path, $tmpPath = sys_get_temp_dir().'/'.uniqid())) || (false === $extension = $mimes->getExtension(mime_content_type($tmpPath))))) {

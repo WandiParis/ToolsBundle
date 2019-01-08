@@ -9,8 +9,8 @@ class Sharer
      *
      * @param string $url
      * @param string $subject
-     * @param string $email
      *
+     * @param string $email
      * @return string
      */
     public static function getMail(string $url, string $subject, string $email): string
@@ -69,6 +69,8 @@ class Sharer
      * @param string $url
      * @param string $title
      *
+     * @param string $summary
+     * @param string $source
      * @return string
      */
     public static function getLinkedIn(string $url, string $title, string $summary = "", string $source = ""): string
@@ -85,8 +87,8 @@ class Sharer
      * Get pinterest share url.
      *
      * @param string $url
-     * @param string $title
-     *
+     * @param string $source
+     * @param string $description
      * @return string
      */
     public static function getPinterest(string $url, string $source, string $description = ""): string

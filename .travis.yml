@@ -12,6 +12,7 @@ matrix:
 
 install:
   - composer install
+  - composer require phpunit/phpunit
 
 script:
   - ./vendor/bin/phpunit -v --stop-on-failure
