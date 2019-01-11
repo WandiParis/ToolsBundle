@@ -84,12 +84,12 @@ class Formatter
     /**
      * Format a card number.
      *
-     * @param int    $value
+     * @param string $value
      * @param string $separator
      *
      * @return string
      */
-    public static function cardNumberFormat(int $value, string $separator = ' ')
+    public static function cardNumberFormat(string $value, string $separator = ' ')
     {
         return implode($separator, str_split($value, 4));
     }

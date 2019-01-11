@@ -1,6 +1,6 @@
 <?php
 
-namespace Wandi\ToolsBundle\Tests\Util\TokenGenerator;
+namespace Wandi\ToolsBundle\Tests\Util;
 
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 use Wandi\ToolsBundle\Util\TokenGenerator;
