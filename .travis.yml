@@ -19,6 +19,8 @@ matrix:
 
 install:
   - composer update --prefer-dist
+  - composer require phpstan/phpstan
 
 script:
   - ./vendor/bin/phpunit -v --stop-on-failure
+  - ./vendor/bin/phpstan analyse . --level=3
