@@ -23,4 +23,4 @@ install:
 
 script:
   - ./vendor/bin/phpunit -v --stop-on-failure
-  - ./vendor/bin/phpstan analyse . --level=3
+  - ./vendor/bin/phpstan analyse .
