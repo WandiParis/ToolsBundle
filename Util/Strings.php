@@ -27,7 +27,8 @@ class Strings
         $result = mb_substr($haystack, 0, $length, 'utf-8');
 
         if (preg_match('/^[a-zàâçéèêëîïôûùüÿñæœ]*$/i', $haystack[$length])) {
-            $result = mb_substr($result, 0, mb_strrpos($result, ' ', 'utf-8'), 'utf-8');
+            $pos = mb_strrpos($result, ' ', 0, 'utf-8');
+            $result = mb_substr($result, 0, is_int($pos) ? $pos : null, 'utf-8');
         }
 
         if (true === $hasMore) {
@@ -42,7 +43,7 @@ class Strings
      *
      * @return string
      */
-    public static function slug(string $haystack): string
+    public static function slug(string $haystack): ?string
     {
         $haystack = htmlentities($haystack, ENT_NOQUOTES, 'utf-8');
         $haystack = preg_replace(
@@ -50,11 +51,20 @@ class Strings
             '\1',
             $haystack
         );
-        $haystack = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $haystack);
-        $haystack = preg_replace('#&[^;]+;#', '', $haystack);
-        $haystack = preg_replace('/[^a-z0-9]+/', '-', strtolower($haystack));
 
-        return trim($haystack, '-');
+        if (null !== $haystack) {
+            $haystack = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $haystack);
+        }
+
+        if (null !== $haystack) {
+            $haystack = preg_replace('#&[^;]+;#', '', $haystack);
+        }
+
+        if (null !== $haystack) {
+            $haystack = preg_replace('/[^a-z0-9]+/', '-', strtolower($haystack));
+        }
+
+        return null !== $haystack ? trim($haystack, '-') : null;
     }
 
     /**
@@ -66,11 +76,12 @@ class Strings
     public static function substrBeforeFirstDelimiter(string $haystack, string $delimiter): string
     {
         $exploded = explode($delimiter, $haystack);
-        if (count($exploded) > 0) {
-            return $exploded[0];
+
+        if (false === $exploded || 0 === \count($exploded)) {
+            return $haystack;
         }
 
-        return $haystack;
+        return $exploded[0];
     }
 
     /**
@@ -83,7 +94,11 @@ class Strings
     {
         $exploded = explode($delimiter, $haystack);
 
-        return implode($delimiter, array_slice($exploded, 0, max(1, count($exploded) - 1)));
+        if (false === $exploded) {
+            return $haystack;
+        }
+
+        return implode($delimiter, array_slice($exploded, 0, max(1, \count($exploded) - 1)));
     }
 
     /**
@@ -96,7 +111,11 @@ class Strings
     {
         $exploded = explode($delimiter, $haystack);
 
-        return $exploded[count($exploded) - 1];
+        if (false === $exploded) {
+            return $haystack;
+        }
+
+        return $exploded[\count($exploded) - 1];
     }
 
     /**
@@ -108,7 +127,12 @@ class Strings
     public static function substrAfterFirstDelimiter(string $haystack, string $delimiter): string
     {
         $exploded = explode($delimiter, $haystack);
-        $count = count($exploded);
+
+        if (false === $exploded) {
+            return $haystack;
+        }
+
+        $count = \count($exploded);
 
         return implode($delimiter, array_slice($exploded, 1 === $count ? 0 : 1, max(1, $count - 1)));
     }
@@ -117,9 +141,9 @@ class Strings
      * @param string $haystack
      * @param string $needle
      *
-     * @return string
+     * @return bool
      */
-    public static function startsWith(string $haystack, string $needle): string
+    public static function startsWith(string $haystack, string $needle): bool
     {
         $length = mb_strlen($needle, 'utf-8');
 
@@ -130,9 +154,9 @@ class Strings
      * @param string $haystack
      * @param string $needle
      *
-     * @return string
+     * @return bool
      */
-    public static function endsWith(string $haystack, string $needle): string
+    public static function endsWith(string $haystack, string $needle): bool
     {
         $length = mb_strlen($needle, 'utf-8');
         if (0 == $length) {

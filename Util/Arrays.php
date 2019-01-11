@@ -6,10 +6,10 @@ class Arrays
 {
     /**
      * @param array    $array
-     * @param int|null $min
+     * @param int      $min
      * @param int|null $max
      *
-     * @return array|null+
+     * @return array|null
      */
     public static function getRandomSubArray(array $array, int $min = 0, int $max = null): ?array
     {
