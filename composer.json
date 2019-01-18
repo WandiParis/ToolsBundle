@@ -22,8 +22,6 @@
         "symfony/framework-bundle": ">=3.3",
         "ralouphie/mimey": "^2.0",
         "ext-fileinfo": "*",
-        "phpunit/phpunit": "^7.5",
-        "symfony/phpunit-bridge": "^4.1",
         "twig/twig": "^2.4.2"
     },
     "suggest": {
@@ -32,5 +30,8 @@
         "psr-4": {
             "Wandi\\ToolsBundle\\": ""
         }
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^4.2"
     }
 }
