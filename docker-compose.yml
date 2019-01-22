@@ -1,9 +1,0 @@
-version: '3.1'
-
-services:
-    php:
-        build: ./docker/php
-        volumes:
-            - ./docker/php/app.ini:/usr/local/etc/php/conf.d/docker-php-ext-app.ini:ro
-            - .:/src
-        working_dir: /src
