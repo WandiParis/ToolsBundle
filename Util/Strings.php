@@ -62,7 +62,7 @@ class Strings
         }
 
         if (null !== $haystack) {
-            $haystack = preg_replace('/[^a-z0-9]+/', '-', strtolower($haystack));
+            $haystack = preg_replace('/[^a-z0-9]+/', $replace, strtolower($haystack));
         }
 
         return null !== $haystack ? trim($haystack, $replace) : null;
