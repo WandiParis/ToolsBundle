@@ -27,6 +27,7 @@ class StringsTest extends TestCase
         $this->assertSame('hello-world', Strings::slug('Hello world'));
         $this->assertSame('hello-world', Strings::slug('!!Hello!world!!'));
         $this->assertSame('hello-world', Strings::slug('  Hello  world     '));
+        $this->assertSame('hello.world', Strings::slug('Hello world!', '.'));
     }
 
     public function testSubstrBeforeFirstDelimiter()
