@@ -18,7 +18,7 @@ matrix:
     - php: 7.3
 
 install:
-  - composer update --prefer-distgit 
+  - composer update
 
 script:
   - ./vendor/bin/phpunit -v --stop-on-failure
