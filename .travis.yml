@@ -18,8 +18,7 @@ matrix:
     - php: 7.3
 
 install:
-  - composer update --prefer-dist
-  - composer require phpstan/phpstan
+  - composer update
 
 script:
   - ./vendor/bin/phpunit -v --stop-on-failure

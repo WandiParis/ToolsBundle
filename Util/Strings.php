@@ -41,9 +41,10 @@ class Strings
     /**
      * @param string $haystack
      *
+     * @param string $replace
      * @return string
      */
-    public static function slug(string $haystack): ?string
+    public static function slug(string $haystack, string $replace = '-'): ?string
     {
         $haystack = htmlentities($haystack, ENT_NOQUOTES, 'utf-8');
         $haystack = preg_replace(
@@ -61,10 +62,10 @@ class Strings
         }
 
         if (null !== $haystack) {
-            $haystack = preg_replace('/[^a-z0-9]+/', '-', strtolower($haystack));
+            $haystack = preg_replace('/[^a-z0-9]+/', $replace, strtolower($haystack));
         }
 
-        return null !== $haystack ? trim($haystack, '-') : null;
+        return null !== $haystack ? trim($haystack, $replace) : null;
     }
 
     /**
