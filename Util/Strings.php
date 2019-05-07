@@ -168,8 +168,7 @@ class Strings
     }
 
     /**
-     * @param $string
-     *
+     * @param string $string
      * @return string
      */
     public static function normalize(string $string): string
