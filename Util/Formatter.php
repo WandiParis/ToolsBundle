@@ -51,7 +51,7 @@ class Formatter
      * @param int         $nbDecimals
      * @param string      $decSep
      * @param string      $thousandsSep
-     * @param null|string $symbol
+     * @param string|null $symbol
      * @param string      $separator
      *
      * @return string
@@ -101,7 +101,7 @@ class Formatter
      * @param int         $nbDecimals
      * @param string      $decSep
      * @param string      $thousandsSep
-     * @param null|string $symbol
+     * @param string|null $symbol
      * @param string      $separator
      *
      * @return string
