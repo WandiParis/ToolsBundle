@@ -97,7 +97,7 @@ class Files
      * @param array      $paths
      * @param array|null $extensions
      *
-     * @return null|UploadedFile
+     * @return UploadedFile|null
      */
     public static function getRandomUploadedFile(array $paths, array $extensions = null): ?UploadedFile
     {
